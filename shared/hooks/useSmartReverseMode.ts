@@ -23,7 +23,8 @@ interface SmartReverseModeOptions {
  * - Increases by 10% for each consecutive correct answer
  * - Caps at 70% reverse probability after 5 consecutive correct answers
  * - Forces a mode switch every 4 consecutive correct answers to keep it varied
- * - Resets consecutive counter on wrong answers (making reverse less likely when struggling)
+ * - Call recordWrongAnswer() on wrong answers to reset streak without changing mode
+ * - Call decideNextMode() only on correct answers to advance to next question
  */
 export const useSmartReverseMode = (options: SmartReverseModeOptions = {}) => {
   const {
@@ -36,36 +37,39 @@ export const useSmartReverseMode = (options: SmartReverseModeOptions = {}) => {
   const [consecutiveCorrect, setConsecutiveCorrect] = useState(0);
   const [isReverse, setIsReverse] = useState(false);
 
-  const decideNextMode = useCallback(
-    (wasCorrect: boolean) => {
-      const newConsecutive = wasCorrect ? consecutiveCorrect + 1 : 0;
-      setConsecutiveCorrect(newConsecutive);
+  // Call this on wrong answers to reset the streak without changing mode
+  const recordWrongAnswer = useCallback(() => {
+    setConsecutiveCorrect(0);
+  }, []);
 
-      const reverseProbability = Math.min(
-        baseProbability + newConsecutive * incrementPerCorrect,
-        maxProbability
-      );
+  // Call this only on correct answers to decide the next mode
+  const decideNextMode = useCallback(() => {
+    const newConsecutive = consecutiveCorrect + 1;
+    setConsecutiveCorrect(newConsecutive);
 
-      // Add some randomness - occasionally force a mode switch to keep it interesting
-      const forceSwitch =
-        newConsecutive > 0 && newConsecutive % forceSwitchInterval === 0;
+    const reverseProbability = Math.min(
+      baseProbability + newConsecutive * incrementPerCorrect,
+      maxProbability
+    );
 
-      if (forceSwitch) {
-        setIsReverse(prev => !prev);
-      } else {
-        setIsReverse(random.real(0, 1) < reverseProbability);
-      }
-    },
-    [
-      consecutiveCorrect,
-      baseProbability,
-      incrementPerCorrect,
-      maxProbability,
-      forceSwitchInterval
-    ]
-  );
+    // Add some randomness - occasionally force a mode switch to keep it interesting
+    const forceSwitch =
+      newConsecutive > 0 && newConsecutive % forceSwitchInterval === 0;
 
-  return { isReverse, decideNextMode, consecutiveCorrect };
+    if (forceSwitch) {
+      setIsReverse(prev => !prev);
+    } else {
+      setIsReverse(random.real(0, 1) < reverseProbability);
+    }
+  }, [
+    consecutiveCorrect,
+    baseProbability,
+    incrementPerCorrect,
+    maxProbability,
+    forceSwitchInterval
+  ]);
+
+  return { isReverse, decideNextMode, recordWrongAnswer, consecutiveCorrect };
 };
 
 export default useSmartReverseMode;

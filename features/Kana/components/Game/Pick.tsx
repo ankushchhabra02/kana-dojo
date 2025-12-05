@@ -27,7 +27,8 @@ interface PickGameProps {
 }
 
 const PickGame = ({ isHidden }: PickGameProps) => {
-  const { isReverse, decideNextMode } = useSmartReverseMode();
+  const { isReverse, decideNextMode, recordWrongAnswer } =
+    useSmartReverseMode();
   const score = useStatsStore(state => state.score);
   const setScore = useStatsStore(state => state.setScore);
 
@@ -243,7 +244,7 @@ const PickGame = ({ isHidden }: PickGameProps) => {
     // Update adaptive weight system - reduces probability of mastered characters
     adaptiveSelector.updateCharacterWeight(correctChar, true);
     // Smart algorithm decides next mode based on performance
-    decideNextMode(true);
+    decideNextMode();
   };
 
   const handleWrongAnswer = (selectedChar: string) => {
@@ -260,8 +261,8 @@ const PickGame = ({ isHidden }: PickGameProps) => {
     triggerCrazyMode();
     // Update adaptive weight system - increases probability of difficult characters
     adaptiveSelector.updateCharacterWeight(currentChar, false);
-    // Smart algorithm decides next mode based on performance
-    decideNextMode(false);
+    // Reset consecutive streak without changing mode (avoids rerolling the question)
+    recordWrongAnswer();
   };
 
   const displayChar = isReverse ? correctRomajiCharReverse : correctKanaChar;

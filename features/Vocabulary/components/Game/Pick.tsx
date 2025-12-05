@@ -36,7 +36,8 @@ interface VocabPickGameProps {
 }
 
 const VocabPickGame = ({ selectedWordObjs, isHidden }: VocabPickGameProps) => {
-  const { isReverse, decideNextMode } = useSmartReverseMode();
+  const { isReverse, decideNextMode, recordWrongAnswer } =
+    useSmartReverseMode();
   const score = useStatsStore(state => state.score);
   const setScore = useStatsStore(state => state.setScore);
 
@@ -192,7 +193,7 @@ const VocabPickGame = ({ selectedWordObjs, isHidden }: VocabPickGameProps) => {
     // Update adaptive weight system - reduces probability of mastered words
     adaptiveSelector.updateCharacterWeight(correctChar, true);
     // Smart algorithm decides next mode based on performance
-    decideNextMode(true);
+    decideNextMode();
   };
 
   const handleWrongAnswer = (selectedOption: string) => {
@@ -208,8 +209,8 @@ const VocabPickGame = ({ selectedWordObjs, isHidden }: VocabPickGameProps) => {
     triggerCrazyMode();
     // Update adaptive weight system - increases probability of difficult words
     adaptiveSelector.updateCharacterWeight(correctChar, false);
-    // Smart algorithm decides next mode based on performance
-    decideNextMode(false);
+    // Reset consecutive streak without changing mode (avoids rerolling the question)
+    recordWrongAnswer();
   };
 
   const generateNewCharacter = () => {

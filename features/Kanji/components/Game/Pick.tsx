@@ -30,7 +30,8 @@ interface KanjiPickGameProps {
 }
 
 const KanjiPickGame = ({ selectedKanjiObjs, isHidden }: KanjiPickGameProps) => {
-  const { isReverse, decideNextMode } = useSmartReverseMode();
+  const { isReverse, decideNextMode, recordWrongAnswer } =
+    useSmartReverseMode();
   const score = useStatsStore(state => state.score);
   const setScore = useStatsStore(state => state.setScore);
 
@@ -184,7 +185,7 @@ const KanjiPickGame = ({ selectedKanjiObjs, isHidden }: KanjiPickGameProps) => {
     // Update adaptive weight system - reduces probability of mastered characters
     adaptiveSelector.updateCharacterWeight(correctChar, true);
     // Smart algorithm decides next mode based on performance
-    decideNextMode(true);
+    decideNextMode();
   };
 
   const handleWrongAnswer = (selectedOption: string) => {
@@ -200,8 +201,8 @@ const KanjiPickGame = ({ selectedKanjiObjs, isHidden }: KanjiPickGameProps) => {
     triggerCrazyMode();
     // Update adaptive weight system - increases probability of difficult characters
     adaptiveSelector.updateCharacterWeight(correctChar, false);
-    // Smart algorithm decides next mode based on performance
-    decideNextMode(false);
+    // Reset consecutive streak without changing mode (avoids rerolling the question)
+    recordWrongAnswer();
   };
 
   const generateNewCharacter = () => {
