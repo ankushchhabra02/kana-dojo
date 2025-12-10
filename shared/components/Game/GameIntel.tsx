@@ -12,6 +12,7 @@ import useKanjiStore from '@/features/Kanji/store/useKanjiStore';
 import useVocabStore from '@/features/Vocabulary/store/useVocabStore';
 import { usePathname } from 'next/navigation';
 import { removeLocaleFromPath } from '@/shared/lib/pathUtils';
+import { formatLevelsAsRanges } from '@/shared/lib/helperFunctions';
 
 const GameIntel = ({
   gameMode,
@@ -78,18 +79,10 @@ const GameIntel = ({
         </span>
         <span className='text-[var(--main-color)]'>
           {trainingDojo === 'kanji'
-            ? selectedKanjiSets
-                .sort()
-                .join(', ')
-                .toLowerCase()
-                .replace(/set /g, ' ')
+            ? formatLevelsAsRanges(selectedKanjiSets)
             : trainingDojo === 'vocabulary'
-            ? selectedVocabSets
-                .sort()
-                .join(', ')
-                .toLowerCase()
-                .replace(/set /g, ' ')
-            : null}
+              ? formatLevelsAsRanges(selectedVocabSets)
+              : null}
         </span>
       </p>
     </div>
