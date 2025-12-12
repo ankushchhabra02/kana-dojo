@@ -12,6 +12,7 @@ import { useClick } from '@/shared/hooks/useAudio';
 import { ActionButton } from '@/shared/components/ui/ActionButton';
 
 // Canary change: verifying Husky/Prettier pre-commit formatting.
+// Canary change #2: verifying jsxSingleQuote formatting in JSX attributes.
 
 type QuickSelectModalProps = {
   isOpen: boolean;
@@ -59,7 +60,7 @@ const QuickSelectModal = ({
 
   return (
     <div
-      className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/50"
+      className='fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/50'
       onClick={e => {
         if (e.target === e.currentTarget) {
           playClick();
@@ -67,13 +68,13 @@ const QuickSelectModal = ({
         }
       }}
     >
-      <div className="bg-[var(--background-color)] rounded-2xl border-2 border-[var(--border-color)] max-w-4xl w-full max-h-[85vh] sm:max-h-[80vh] overflow-hidden flex flex-col">
-        <div className="flex items-center justify-between p-4 sm:p-6 border-b-2 border-[var(--border-color)] flex-shrink-0">
+      <div className='bg-[var(--background-color)] rounded-2xl border-2 border-[var(--border-color)] max-w-4xl w-full max-h-[85vh] sm:max-h-[80vh] overflow-hidden flex flex-col'>
+        <div className='flex items-center justify-between p-4 sm:p-6 border-b-2 border-[var(--border-color)] flex-shrink-0'>
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-[var(--main-color)]">
+            <h2 className='text-xl sm:text-2xl font-bold text-[var(--main-color)]'>
               Quick Select - {unitName.toUpperCase()}
             </h2>
-            <p className="text-xs sm:text-sm text-[var(--secondary-color)] mt-1">
+            <p className='text-xs sm:text-sm text-[var(--secondary-color)] mt-1'>
               {selectedSets.length} of {sets.length} levels selected
             </p>
           </div>
@@ -82,13 +83,13 @@ const QuickSelectModal = ({
               playClick();
               onClose();
             }}
-            className="p-2 rounded-xl hover:bg-[var(--card-color)] transition-colors flex-shrink-0 hover:cursor-pointer"
+            className='p-2 rounded-xl hover:bg-[var(--card-color)] transition-colors flex-shrink-0 hover:cursor-pointer'
           >
-            <X size={24} className="text-[var(--secondary-color)] " />
+            <X size={24} className='text-[var(--secondary-color)] ' />
           </button>
         </div>
 
-        <div className="flex flex-wrap gap-2 sm:gap-3 p-3 sm:p-4 border-b-2 border-[var(--border-color)] flex-shrink-0">
+        <div className='flex flex-wrap gap-2 sm:gap-3 p-3 sm:p-4 border-b-2 border-[var(--border-color)] flex-shrink-0'>
           {[
             {
               label: 'Select All',
@@ -146,7 +147,7 @@ const QuickSelectModal = ({
                 disabled={btn.disabled}
                 colorScheme={btn.colorScheme ?? 'secondary'}
                 borderColorScheme={btn.borderColorScheme ?? 'secondary'}
-                borderRadius="2xl"
+                borderRadius='2xl'
                 borderBottomThickness={6}
                 className={clsx(
                   'w-auto text-sm disabled:cursor-not-allowed disabled:opacity-50',
@@ -160,10 +161,10 @@ const QuickSelectModal = ({
                   )}
                 >
                   {btn.icon ? (
-                    <btn.icon size={16} className="text-current" />
+                    <btn.icon size={16} className='text-current' />
                   ) : null}
                   {btn.iconOnly ? (
-                    <span className="sr-only">{btn.label}</span>
+                    <span className='sr-only'>{btn.label}</span>
                   ) : (
                     btn.label
                   )}
@@ -171,15 +172,15 @@ const QuickSelectModal = ({
               </ActionButton>
             ))}
           <input
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
+            type='text'
+            inputMode='numeric'
+            pattern='[0-9]*'
             onChange={e => {
               playClick();
               const value = e.target.value.replace(/\D/g, '');
               setSearchLevel(value);
             }}
-            placeholder="search for a level..."
+            placeholder='search for a level...'
             className={clsx(
               'px-3 sm:px-4 py-2 text-sm rounded-xl border-2 transition-all',
               'border-[var(--border-color)] hover:bg-[var(--card-color)]',
@@ -190,17 +191,17 @@ const QuickSelectModal = ({
         </div>
 
         {/* Grid of Sets */}
-        <div className="overflow-y-auto p-4 sm:p-6 flex-1 min-h-0">
+        <div className='overflow-y-auto p-4 sm:p-6 flex-1 min-h-0'>
           {filteredSets.length === 0 ? (
-            <div className="flex items-center justify-center h-full">
-              <p className="text-[var(--secondary-color)] text-sm">
+            <div className='flex items-center justify-center h-full'>
+              <p className='text-[var(--secondary-color)] text-sm'>
                 No level found. Available levels:{' '}
                 {sets[0]?.name.match(/\d+/)?.[0]} -{' '}
                 {sets[sets.length - 1]?.name.match(/\d+/)?.[0]}
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3">
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3'>
               {filteredSets.map(set => {
                 const isSelected = selectedSets.includes(set.name);
                 return (
@@ -212,7 +213,7 @@ const QuickSelectModal = ({
                     }}
                     colorScheme={isSelected ? 'main' : undefined}
                     borderColorScheme={isSelected ? 'main' : undefined}
-                    borderRadius="xl"
+                    borderRadius='xl'
                     borderBottomThickness={isSelected ? 6 : 0}
                     className={clsx(
                       'flex flex-col items-center gap-2 p-3 sm:p-4',
@@ -224,19 +225,19 @@ const QuickSelectModal = ({
                     {isSelected ? (
                       <CircleCheck
                         size={18}
-                        className="text-[var(--background-color)] flex-shrink-0"
+                        className='text-[var(--background-color)] flex-shrink-0'
                       />
                     ) : (
                       <Circle
                         size={18}
-                        className="text-[var(--main-color)] flex-shrink-0"
+                        className='text-[var(--main-color)] flex-shrink-0'
                       />
                     )}
-                    <span className="text-xs sm:text-sm font-medium text-center">
+                    <span className='text-xs sm:text-sm font-medium text-center'>
                       {set.name.replace('Set ', 'Level ')}
                     </span>
                     {set.isMastered && (
-                      <span className="text-[10px] sm:text-xs opacity-70">
+                      <span className='text-[10px] sm:text-xs opacity-70'>
                         Mastered
                       </span>
                     )}
@@ -247,17 +248,17 @@ const QuickSelectModal = ({
           )}
         </div>
 
-        <div className="p-3 sm:p-4 border-t-2 border-[var(--border-color)] flex justify-end flex-shrink-0">
+        <div className='p-3 sm:p-4 border-t-2 border-[var(--border-color)] flex justify-end flex-shrink-0'>
           <ActionButton
             onClick={() => {
               playClick();
               onClose();
             }}
-            colorScheme="main"
-            borderColorScheme="main"
-            borderRadius="xl"
+            colorScheme='main'
+            borderColorScheme='main'
+            borderRadius='xl'
             borderBottomThickness={4}
-            className="w-auto px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium"
+            className='w-auto px-5 sm:px-6 py-2.5 sm:py-3 text-sm sm:text-base font-medium'
           >
             Done
           </ActionButton>
