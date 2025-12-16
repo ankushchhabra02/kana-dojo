@@ -6,7 +6,9 @@ This file provides comprehensive guidance to AI coding assistants (GitHub Copilo
 
 ## ⚠️ IMPORTANT: Git Commit Requirement
 
-**After completing any code changes, you MUST include a combined `git add` and `git commit` command with a descriptive conventional commit message.**
+**After completing any code changes, you MUST PROVIDE (not execute) a combined `git add` and `git commit` command with a descriptive conventional commit message.**
+
+⛔ **DO NOT RUN the git command yourself.** Only provide the command at the end of your response so the user can run it manually.
 
 Always provide this command at the end of your response using multiple `-m` flags for multiline messages:
 
@@ -25,7 +27,7 @@ git add -A && git commit -m "<type>(<scope>): <description>" -m "<body line 1>" 
 - `test`: Adding or updating tests
 - `chore`: Maintenance tasks, dependencies, configs
 
-**Example:**
+**Example (provide this, do not execute):**
 
 ```bash
 git add -A && git commit -m "feat(kana): add dakuon character support" -m "Added new dakuon characters to hiragana set" -m "Updated KanaCards component to display dakuon" -m "Added translations for new character names"
