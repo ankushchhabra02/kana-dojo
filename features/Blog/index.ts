@@ -52,3 +52,10 @@ export {
   type HreflangTag,
   type HreflangOptions
 } from './lib/generateHreflang';
+
+// Components
+export { BlogCard } from './components/BlogCard';
+export { BlogList, filterPostsByCategory } from './components/BlogList';
+export { CategoryFilter } from './components/CategoryFilter';
+export { TableOfContents } from './components/TableOfContents';
+export { RelatedPosts } from './components/RelatedPosts';
