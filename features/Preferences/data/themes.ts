@@ -707,7 +707,13 @@ const baseThemeSets: BaseThemeGroup[] = [
         backgroundColor: 'oklch(20.0% 0.040 190.0 / 1)',
         mainColor:       'oklch(86.0% 0.140 180.0 / 1)', 
         secondaryColor:  'oklch(74.0% 0.090 150.0 / 1)',  
-      }
+      },
+      {
+       id: 'yozakura',
+       backgroundColor: 'oklch(22.0% 0.030 315.0 / 1)',
+       mainColor:       'oklch(86.5% 0.135 331.0 / 1)',  
+       secondaryColor:  'oklch(72.0% 0.070 320.0 / 1)', 
+      },
     ]
   },
   {
