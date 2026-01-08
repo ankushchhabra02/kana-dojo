@@ -894,7 +894,13 @@ const baseThemeSets: BaseThemeGroup[] = [
         backgroundColor: 'oklch(18.0% 0.046 247.0 / 1)',
         mainColor: 'oklch(92.0% 0.252 210.0 / 1)',
         secondaryColor: 'oklch(93.0% 0.146 338.0 / 1)'
-      }
+      },
+      {
+        id: 'sakuraba',
+        backgroundColor: 'oklch(24.5% 0.044 150.0 / 1)',    // dappled willow green
+        mainColor: 'oklch(93.0% 0.210 340.0 / 1)',           // radiant sakura pink
+        secondaryColor: 'oklch(85.0% 0.148 262.0 / 1)',      // cool hyacinth blue
+      },
     ]
   },
   {
