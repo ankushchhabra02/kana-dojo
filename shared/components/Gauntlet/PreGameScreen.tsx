@@ -85,6 +85,11 @@ export default function PreGameScreen({
     [totalQuestions],
   );
 
+  const selectedSetsLabel = useMemo(
+    () => (selectedSets.length > 0 ? selectedSets.join(', ') : 'None'),
+    [selectedSets],
+  );
+
   const gameModes = useMemo(
     () => [
       {
@@ -141,7 +146,7 @@ export default function PreGameScreen({
                 Selected:
               </span>
               <span className='text-sm text-(--secondary-color)'>
-                {selectedSets.length > 0 ? selectedSets.join(', ') : 'None'}
+                {selectedSetsLabel}
               </span>
               <span className='text-xs text-(--secondary-color)'>
                 {itemsCount} characters × {repetitions} = {totalQuestions}{' '}
