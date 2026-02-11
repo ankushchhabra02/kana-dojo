@@ -391,11 +391,13 @@
   },
   {
     "id": 79,
-    "text": "\"〜にすぎない\" means \"no more than...\"."
+    "text": "\"〜にすぎない\" means \"no more than...\".",
+    "completed": true
   },
   {
     "id": 80,
-    "text": "\"〜てはじめて\" means \"only after...\"."
+    "text": "\"〜てはじめて\" means \"only after...\".",
+    "issued": true
   },
   {
     "id": 81,
