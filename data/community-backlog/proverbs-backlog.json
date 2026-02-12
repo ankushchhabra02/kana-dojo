@@ -59,7 +59,7 @@
     "romaji": "Keizoku wa chikara nari",
     "english": "Continuation is power",
     "meaning": "Persistence leads to strength and success",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -68,7 +68,7 @@
     "romaji": "Isogaba maware",
     "english": "If in a hurry, go around",
     "meaning": "Taking the safer, longer route is sometimes faster",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -77,7 +77,7 @@
     "romaji": "Gou ni itte wa gou ni shitagae",
     "english": "When in a village, follow the village customs",
     "meaning": "When in Rome, do as the Romans do",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -86,7 +86,7 @@
     "romaji": "Korobanu saki no tsue",
     "english": "A cane before falling",
     "meaning": "Prevention is better than cure",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -95,7 +95,7 @@
     "romaji": "Toki wa kane nari",
     "english": "Time is money",
     "meaning": "Time is valuable and should not be wasted",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -104,7 +104,7 @@
     "romaji": "Ni to wo ou mono wa itto wo mo ezu",
     "english": "One who chases two rabbits catches neither",
     "meaning": "Focus on one thing at a time",
-    "completed": false,
+    "completed": true,
     "issued": false
   },
   {
@@ -113,7 +113,7 @@
     "romaji": "Ame futte ji katamaru",
     "english": "After rain, the ground hardens",
     "meaning": "Adversity builds strength",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
