@@ -8,7 +8,7 @@
 
 ![Training](https://github.com/user-attachments/assets/d491708f-2ad3-41c7-9717-dec8a90afd03)
 
-**An aesthetic, minimalist and highly customizable platform for mastering Japanese inspired by Monkeytype**
+**An aesthetic, minimalist and highly customizable platform for mastering Japanese inspired by Duolingo and Monkeytype. Sponsored by Vercel**
 
 [![Live Demo](https://img.shields.io/badge/demo-kanadojo.com-blue?style=for-the-badge)](https://kanadojo.com)
 [![DeepWiki](https://img.shields.io/badge/docs-DeepWiki-purple?style=for-the-badge)](https://deepwiki.com/lingdojo/kana-dojo)
