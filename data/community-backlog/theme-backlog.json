@@ -679,7 +679,9 @@
     "mainColor": "oklch(72.0% 0.195 220.0 / 1)",
     "secondaryColor": "oklch(68.0% 0.205 30.0 / 1)",
     "issued": true,
-    "completed": false
+    "completed": true,
+    "completedBy": "imandisp",
+    "completedPR": 4931
   },
   {
     "id": "bamboo-forest",
