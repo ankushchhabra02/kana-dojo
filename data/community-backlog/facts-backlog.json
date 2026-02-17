@@ -321,12 +321,12 @@
     "id": 54,
     "fact": "Japan has a highway that passes directly through a building in Osaka - the Gate Tower Building has floors 5-7 as a tunnel.",
     "issued": false,
-    "completed": false
+    "completed": true
   },
   {
     "id": 55,
     "fact": "The concept of 'omotenashi' (ãŠã‚‚ã¦ãªã—) is Japanese hospitality that anticipates needs before guests even realize them.",
-    "issued": false,
+    "issued": true,
     "completed": false
   },
   {
